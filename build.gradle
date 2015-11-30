@@ -1,6 +1,17 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.akhikhl.gretty:gretty:1.2.4"
+    }
+}
+
 apply plugin: 'scala'
 apply plugin: 'war'
-apply from: 'https://raw.github.com/akhikhl/gretty/master/pluginScripts/gretty.plugin'
+apply plugin: "org.akhikhl.gretty"
 
 gretty {
   contextPath = '/'
@@ -11,8 +22,12 @@ repositories {
 }
 
 dependencies {
+  compile "org.scala-lang:scala-library:2.11.7"
+  compile "org.scala-lang:scala-reflect:2.11.7"
+  compile "org.scala-lang:scala-compiler:2.11.7"
+
   compile 'org.mortbay.jetty:servlet-api:2.5.20110712'
-  compile 'ch.qos.logback:logback-classic:1.0.13'
-  compile 'org.scala-lang:scala-library:2.10.2'
-  compile 'org.scalatra:scalatra_2.10:2.3.1'
+  compile 'ch.qos.logback:logback-classic:1.1.2'
+  compile 'org.scala-lang:scala-library:2.11.7'
+  compile 'org.scalatra:scalatra_2.11:2.4.0.RC3'
 }
